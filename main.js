@@ -12,7 +12,16 @@ var obj ={
     descipition:descipition,
     category:category
 }
-localStorage.setItem(descipition,JSON.stringify(obj) )
+axios.post("https://crudcrud.com/api/230d19eb85e94c499797a2269baf9dee/appointmentData",obj)
+.then((resp)=>{
+    show(resp.data)
+    console.log(resp);
+})
+.catch( (err)=>{
+    console.log(err);
+
+} )
+//localStorage.setItem(descipition,JSON.stringify(obj) )
 
 //     let expense = document.getElementById('expense').value;
 //     localStorage.setItem('expense',expense);
@@ -27,7 +36,7 @@ localStorage.setItem(descipition,JSON.stringify(obj) )
 
 
 
-show(obj);
+// show(obj);
 };
 function show(obj){
 //     let expense = document.getElementById('expense').value;
@@ -41,7 +50,7 @@ function show(obj){
     let btn = document.createElement('button');
      btn.textContent = 'delete expense';
      let edit = document.createElement('button');
-     edit.textContent='edit expense';
+     edit.textContent='edit expense ';
      btn.onclick=()=>{
       localStorage.removeItem(childr);
       prt.removeChild(childr)
